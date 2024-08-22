@@ -1,0 +1,73 @@
+from bs4 import BeautifulSoup as soup
+import time
+
+with open("index.html", "r") as f:
+    doc = soup(f, "html.parser")
+
+views = doc.find('div', class_='views')
+
+production = doc.find('div', class_='production')
+
+creators = doc.find('div', class_='creators')
+
+ratings = doc.find('div', class_='ratings')
+
+funf = doc.find('div', class_='funf')
+
+print("hey there, you here for the stats")
+print("then let's go !!!")
+print("")
+
+def queries():
+    print("1. Ratings")
+    print("2. Views")
+    print("3. Production")
+    print("4. Creators")
+    print("")
+    res = int(input("select any one of your interest from the above")) 
+
+    print("")
+
+    if res == 1:
+        print("Ratings ??")
+        print("okay..Give me a moment")
+        time.sleep(1)
+        print("here you go...")
+        print(ratings.string)
+    elif res == 2:
+        print("So... You need to know the views count")
+        print(views.string)
+    elif res == 3:
+        print("production info??")
+        time.sleep(1)
+        print("okay")
+        print(production.string)
+    elif res == 4:
+        print("You need the Creator's Information")
+        time.sleep(1)
+        print("okay here you go")
+        print(creators.string)
+    else:
+        print("OH!!.. I guess you aren't interested in any of the info listed above.")
+        print("okay, no problem")
+        print("Hope to see you Again :)")
+        print("Bye!!!")
+queries()
+time.sleep(2)
+def loop():
+    print('would you like to know anything else?')
+    print('y or n')
+    ans = input('')
+    if ans == 'y' or ans =='Y':
+        print("okay!! I am here here to help you")
+        print("so what else would you like to know??")
+        queries()
+        loop()
+    else :
+        print('OH !!')
+        time.sleep(0.5)
+        print("So that's it")
+        print("Hope you got what you were looking for")
+        time.sleep(1)
+        print("Okay then...Bye !!")
+loop()
